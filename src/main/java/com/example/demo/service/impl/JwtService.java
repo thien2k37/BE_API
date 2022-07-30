@@ -1,7 +1,7 @@
-package com.example.houserenting.service.impl;
+package com.example.demo.service.impl;
 
 
-import com.example.houserenting.model.UserPrinciple;
+import com.example.demo.model.UserPrinciple;
 import io.jsonwebtoken.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

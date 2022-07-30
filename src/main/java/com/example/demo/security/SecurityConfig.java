@@ -1,11 +1,11 @@
-package com.example.houserenting.security;
+package com.example.demo.security;
 
 
-import com.example.houserenting.security.jwt.CustomAccessDeniedHandler;
-import com.example.houserenting.security.jwt.JwtAuthenticationFilter;
-import com.example.houserenting.security.jwt.RestAuthenticationEntryPoint;
-import com.example.houserenting.service.UserService;
-import com.example.houserenting.service.impl.UserServiceImpl;
+import com.example.demo.security.jwt.CustomAccessDeniedHandler;
+import com.example.demo.security.jwt.JwtAuthenticationFilter;
+import com.example.demo.security.jwt.RestAuthenticationEntryPoint;
+import com.example.demo.service.UserService;
+import com.example.demo.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,7 +25,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true)
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
     @Bean
     public UserService userService() {
@@ -72,7 +72,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().ignoringAntMatchers("/**");
         http.httpBasic().authenticationEntryPoint(restServicesEntryPoint());
         http.authorizeRequests()
-                .antMatchers("/login", "/register", "/hello", "/users").permitAll()
+                .antMatchers("/login", "/register", "/blogs/**").permitAll()
                 .antMatchers("/orders/**").access("hasRole('ROLE_USER')")
                 .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
                 .anyRequest().authenticated()

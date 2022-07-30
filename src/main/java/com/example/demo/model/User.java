@@ -1,4 +1,4 @@
-package com.example.houserenting.model;
+package com.example.demo.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -25,7 +25,7 @@ public class User implements Serializable {
     @NotBlank(message = "Mật khẩu nhập lại không được trống")
     @Column(nullable = false)
     private String confirmPassword;
-
+    private String phone;
     private String avatar;
     private boolean enabled = true;
 
@@ -107,4 +107,11 @@ public class User implements Serializable {
         this.avatar = avatar;
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 }

@@ -1,8 +1,8 @@
-package com.example.houserenting.service.impl;
+package com.example.demo.service.impl;
 
-import com.example.houserenting.model.Role;
-import com.example.houserenting.repository.RoleRepository;
-import com.example.houserenting.service.RoleService;
+import com.example.demo.model.Role;
+import com.example.demo.repository.RoleRepository;
+import com.example.demo.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

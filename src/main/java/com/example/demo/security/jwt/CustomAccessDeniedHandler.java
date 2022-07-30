@@ -1,4 +1,4 @@
-package com.example.houserenting.security.jwt;
+package com.example.demo.security.jwt;
 
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.web.access.AccessDeniedHandler;

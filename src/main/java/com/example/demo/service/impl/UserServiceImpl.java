@@ -1,9 +1,9 @@
-package com.example.houserenting.service.impl;
+package com.example.demo.service.impl;
 
-import com.example.houserenting.model.User;
-import com.example.houserenting.model.UserPrinciple;
-import com.example.houserenting.repository.UserRepository;
-import com.example.houserenting.service.UserService;
+import com.example.demo.service.UserService;
+import com.example.demo.model.User;
+import com.example.demo.model.UserPrinciple;
+import com.example.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;

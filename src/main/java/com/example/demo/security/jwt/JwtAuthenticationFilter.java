@@ -1,8 +1,8 @@
-package com.example.houserenting.security.jwt;
+package com.example.demo.security.jwt;
 
 
-import com.example.houserenting.service.UserService;
-import com.example.houserenting.service.impl.JwtService;
+import com.example.demo.service.UserService;
+import com.example.demo.service.impl.JwtService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;

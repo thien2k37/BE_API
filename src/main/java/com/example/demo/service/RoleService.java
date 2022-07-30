@@ -1,7 +1,7 @@
-package com.example.houserenting.service;
+package com.example.demo.service;
 
 
-import com.example.houserenting.model.Role;
+import com.example.demo.model.Role;
 
 
 public interface RoleService {

@@ -1,4 +1,4 @@
-package com.example.houserenting.model;
+package com.example.demo.model;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -17,15 +17,17 @@ public class UserPrinciple implements UserDetails {
     private String username;
 
     private String password;
+    private String avatar;
 
     private Collection<? extends GrantedAuthority> roles;
 
     public UserPrinciple(Long id,
-                         String username, String password,
+                         String username, String password, String avatar,
                          Collection<? extends GrantedAuthority> roles) {
         this.id = id;
         this.username = username;
         this.password = password;
+        this.avatar = avatar;
         this.roles = roles;
     }
 
@@ -38,12 +40,16 @@ public class UserPrinciple implements UserDetails {
                 user.getId(),
                 user.getUsername(),
                 user.getPassword(),
+                user.getAvatar(),
                 authorities
         );
     }
 
     public Long getId() {
         return id;
+    }
+    public String getAvatar() {
+        return avatar;
     }
 
     @Override

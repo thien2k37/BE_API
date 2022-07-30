@@ -1,15 +1,14 @@
-package com.example.houserenting.controller;
+package com.example.demo.controller;
 
-import com.example.houserenting.model.JwtResponse;
-import com.example.houserenting.model.Role;
-import com.example.houserenting.model.User;
-import com.example.houserenting.service.RoleService;
-import com.example.houserenting.service.UserService;
-import com.example.houserenting.service.impl.JwtService;
+import com.example.demo.model.JwtResponse;
+import com.example.demo.model.Role;
+import com.example.demo.model.User;
+import com.example.demo.service.RoleService;
+import com.example.demo.service.UserService;
+import com.example.demo.service.impl.JwtService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -21,8 +20,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
 import javax.validation.Valid;
-import java.util.*;
+import java.util.HashSet;
+import java.util.Optional;
+import java.util.Set;
 
 @Validated
 @RestController
@@ -101,13 +103,9 @@ public class UserController {
         String jwt = jwtService.generateTokenLogin(authentication);
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         User currentUser = userService.findByUsername(user.getUsername());
-        return ResponseEntity.ok(new JwtResponse(jwt, currentUser.getId(), userDetails.getUsername(), userDetails.getAuthorities()));
+        return ResponseEntity.ok(new JwtResponse(jwt, currentUser.getId(), userDetails.getUsername(), currentUser.getAvatar(), userDetails.getAuthorities()));
     }
 
-    @GetMapping("/hello")
-    public ResponseEntity<String> hello(){
-        return new ResponseEntity("Hello World", HttpStatus.OK);
-    }
 
     @GetMapping("/users/{id}")
     public ResponseEntity<User> getProfile(@PathVariable Long id) {
