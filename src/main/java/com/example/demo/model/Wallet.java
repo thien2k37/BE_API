@@ -1,27 +1,24 @@
 package com.example.demo.model;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import javax.persistence.*;
-import java.time.LocalDateTime;
+
 @Entity
 public class Wallet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    private Wallet wallet;
+    private String name;
+
+    private String icon;
+
+    private Long totalMoney;
 
     @ManyToOne
-    private Category category_id;
+    private MoneyType moneyType;
+    @ManyToOne
+    private User user;
 
-    private double moneyAmount;
-
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime createdDate;
-
-    private String note;
+    private int status;
 
     public Wallet() {
     }
@@ -34,43 +31,53 @@ public class Wallet {
         this.id = id;
     }
 
-    public Wallet getWallet() {
-        return wallet;
+    public String getName() {
+        return name;
     }
 
-    public void setWallet(Wallet wallet) {
-        this.wallet = wallet;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Category getCategory_id() {
-        return category_id;
+    public String getIcon() {
+        return icon;
     }
 
-    public void setCategory_id(Category category_id) {
-        this.category_id = category_id;
+    public void setIcon(String icon) {
+        this.icon = icon;
     }
 
-    public double getMoneyAmount() {
-        return moneyAmount;
+    public Long getTotalMoney() {
+        return totalMoney;
     }
 
-    public void setMoneyAmount(double moneyAmount) {
-        this.moneyAmount = moneyAmount;
+    public void setTotalMoney(Long totalMoney) {
+        this.totalMoney = totalMoney;
     }
 
-    public LocalDateTime getCreatedDate() {
-        return createdDate;
+    public MoneyType getMoneyType() {
+        return moneyType;
     }
 
-    public void setCreatedDate(LocalDateTime createdDate) {
-        this.createdDate = createdDate;
+    public void setMoneyType(MoneyType moneyType) {
+        this.moneyType = moneyType;
     }
 
-    public String getNote() {
-        return note;
+    public User getUser() {
+        return user;
     }
 
-    public void setNote(String note) {
-        this.note = note;
+    public void setUser(User user) {
+        this.user = user;
     }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
 }
+

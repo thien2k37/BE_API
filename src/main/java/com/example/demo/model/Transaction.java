@@ -1,7 +1,6 @@
 package com.example.demo.model;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import javax.persistence.*;
-import java.time.LocalDateTime;
+
 
 @Entity
 public class Transaction {
@@ -10,15 +9,14 @@ public class Transaction {
     private long id;
 
     @ManyToOne
-    private Wallet wallet_id;
+    private Wallet wallet;
 
     @ManyToOne
     private Category category;
 
-    private double moneyAmount;
+    private Long totalSpent;
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime createdDate;
+    private String time;
 
     private String note;
 
@@ -33,12 +31,12 @@ public class Transaction {
         this.id = id;
     }
 
-    public Wallet getWallet_id() {
-        return wallet_id;
+    public Wallet getWallet() {
+        return wallet;
     }
 
-    public void setWallet_id(Wallet wallet_id) {
-        this.wallet_id = wallet_id;
+    public void setWallet(Wallet wallet) {
+        this.wallet = wallet;
     }
 
     public Category getCategory() {
@@ -49,20 +47,20 @@ public class Transaction {
         this.category = category;
     }
 
-    public double getMoneyAmount() {
-        return moneyAmount;
+    public Long getTotalSpent() {
+        return totalSpent;
     }
 
-    public void setMoneyAmount(double moneyAmount) {
-        this.moneyAmount = moneyAmount;
+    public void setTotalSpent(Long totalSpent) {
+        this.totalSpent = totalSpent;
     }
 
-    public LocalDateTime getCreatedDate() {
-        return createdDate;
+    public String getTime() {
+        return time;
     }
 
-    public void setCreatedDate(LocalDateTime createdDate) {
-        this.createdDate = createdDate;
+    public void setTime(String time) {
+        this.time = time;
     }
 
     public String getNote() {

@@ -14,6 +14,8 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String email;
+
     @NotBlank(message = "Tên đăng nhập không được trống")
     @Column(unique = true, nullable = false)
     private String username;
@@ -25,8 +27,11 @@ public class User implements Serializable {
     @NotBlank(message = "Mật khẩu nhập lại không được trống")
     @Column(nullable = false)
     private String confirmPassword;
-    private String phone;
     private String avatar;
+
+    private String address;
+    private int age;
+    private int sex;
     private boolean enabled = true;
 
     @ManyToMany(fetch = FetchType.EAGER)
@@ -35,20 +40,20 @@ public class User implements Serializable {
             inverseJoinColumns = {@JoinColumn(name = "role_id")})
     private Set<Role> roles;
 
-    public User(String username, String password ,String confirmPassword,String avatar, Set<Role> roles) {
+    public User(Long id, String email, String username, String password, String confirmPassword, String avatar, String address, int age, int sex, Set<Role> roles) {
+        this.id = id;
+        this.email = email;
         this.username = username;
         this.password = password;
         this.confirmPassword = confirmPassword;
         this.avatar = avatar;
+        this.address = address;
+        this.age = age;
+        this.sex = sex;
         this.roles = roles;
-
     }
 
     public User() {
-    }
-
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
     }
 
     public Long getId() {
@@ -57,6 +62,14 @@ public class User implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getUsername() {
@@ -83,6 +96,38 @@ public class User implements Serializable {
         this.confirmPassword = confirmPassword;
     }
 
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public int getSex() {
+        return sex;
+    }
+
+    public void setSex(int sex) {
+        this.sex = sex;
+    }
+
     public Set<Role> getRoles() {
         return roles;
     }
@@ -97,21 +142,5 @@ public class User implements Serializable {
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
-    }
-
-    public String getAvatar() {
-        return avatar;
-    }
-
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
     }
 }

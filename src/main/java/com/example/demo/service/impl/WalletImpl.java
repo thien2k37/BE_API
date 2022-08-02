@@ -38,4 +38,21 @@ public class WalletImpl implements WalletService {
     public void remove(Long id) {
         walletRepository.deleteById(id);
     }
+
+    @Override
+    public Iterable<Wallet> findAllByNameContaining(String name) {
+        return walletRepository.findAllByNameContaining(name);
+    }
+
+    @Override
+    public Iterable<Wallet> findAllByStatusPublicAndUser_Id(Long id) {
+        return walletRepository.findAllByStatusPublicAndUser_Id(id);
+    }
+
+    @Override
+    public Iterable<Wallet> findAllByStatusPrivateAndUser_Id(Long id) {
+        return walletRepository.findAllByStatusPrivateAndUser_Id(id);
+    }
+
+
 }
